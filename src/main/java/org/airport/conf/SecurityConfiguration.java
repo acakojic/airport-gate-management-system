@@ -22,24 +22,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/rest/gates").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/rest/gates/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/rest/flights/**").hasRole("USER")
+                .antMatchers("/swagger-resources/**").hasRole("ADMIN")
+                .antMatchers("/swagger-ui.html").hasRole("ADMIN")
+                .antMatchers("/v2/api-docs").hasRole("ADMIN")
+                .antMatchers("/webjars/**").hasRole("ADMIN")
+                .antMatchers("/h2-console/**").hasRole("ADMIN")
                 .and()
                 .httpBasic()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-    }
-
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-
-        String[] AUTH_WHITELIST = {
-                "/swagger-resources/**",
-                "/swagger-ui.html",
-                "/v2/api-docs",
-                "/webjars/**",
-                "/h2-console/**"
-        };
-
-        web.ignoring().antMatchers(AUTH_WHITELIST);
     }
 
     // Create 2 users for demo

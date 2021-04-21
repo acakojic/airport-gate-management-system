@@ -1,0 +1,42 @@
+# *NIX text editors
+*~
+
+# Gradle work directory
+.gradle
+
+# Build output directies
+target/
+*/target
+build/
+*/build
+
+# IntelliJ specific files/directories
+out
+.idea/
+*.ipr
+*.iws
+*.iml
+atlassian-ide-plugin.xml
+
+# Eclipse specific files/directories
+.classpath
+.project
+.settings
+.metadata
+generated-sources
+*.springBeans
+*.factorypath
+*.checkstyle
+*/src/main/java/META-INF
+bin
+
+# NetBeans specific files/directories
+.nbattrs
+
+# Miscellaneous
+*.log
+.clover
+*.orig
+*.pmd
+*.versionsBackup
+notes.txt

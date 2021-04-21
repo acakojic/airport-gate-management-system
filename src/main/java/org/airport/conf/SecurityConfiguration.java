@@ -2,6 +2,7 @@ package org.airport.conf;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -17,11 +18,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         httpSecurity.csrf().disable();//In practice, this should not be disabled!
 
         httpSecurity.
-                authorizeRequests().antMatchers(HttpMethod.GET).hasRole("ADMIN")
-                .and()
-                .authorizeRequests().antMatchers(HttpMethod.POST).hasRole("ADMIN")
-                .and()
-                .authorizeRequests().antMatchers(HttpMethod.PUT).hasRole("ADMIN")
+                authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/rest/gates").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/rest/gates/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/rest/flights/**").hasRole("USER")
                 .and()
                 .httpBasic()
                 .and()
@@ -35,11 +35,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 "/swagger-resources/**",
                 "/swagger-ui.html",
                 "/v2/api-docs",
-//                "/webjars/**",
+                "/webjars/**",
                 "/h2-console/**"
         };
 
         web.ignoring().antMatchers(AUTH_WHITELIST);
+    }
+
+    // Create 2 users for demo
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+        auth.inMemoryAuthentication()
+                .withUser("user").password("{noop}user").roles("USER")
+                .and()
+                .withUser("admin").password("{noop}admin").roles("USER", "ADMIN");
+
     }
 
 }

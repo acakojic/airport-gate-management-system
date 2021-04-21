@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = AppControllerRoutes.FLIGHT)
 public interface FlightApi {
 
-    @ApiOperation(value = "Get Gate for Flight",
+    @ApiOperation(value = "Get Gate for Flight and park it to Gate",
             nickname = "flight",
             notes = "Get gate",
             response = FlightDto.class, tags={  })

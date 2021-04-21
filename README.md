@@ -19,8 +19,9 @@ Each Gate can have park zero or only one Airplane, i.e. Gate to Aiplane is a bid
 * Spring Security
 * H2 embedded in-memory database with its SQL Dialect for inserting initial data (just for testing purpose)
 
-# REST API Description
+# REST API Description 
 GET, PUT request is secured with username `admin` and password `admin` and CSRF disabled just for testing purpose
+* List of all REST API Description: 'http://localhost:8080/swagger-ui.html'
 * List all Gates: `GET http://localhost:8080/rest/gates`
 * Update existing Gate (identified by id): `PUT http://localhost:8080/rest/gates/{id}`
 * Get specific Flight and park it to Gate if available (by flight_id): `GET http://localhost:8080/rest/flights/{id}/park`

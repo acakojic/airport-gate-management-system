@@ -8,18 +8,16 @@ import javax.persistence.*;
  * Object Relational Mapping for Airport table.
  */
 @Entity
-@Table(name = "FLIGHT")
+@Table(name = "RESERVATION")
 @Data
-public class Flight {
+public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private int id;
 
-    @Column(name = "NAME")
-    private String name;
-
-//    @OneToOne(mappedBy = "flight")
-//    private Gate gate;
+    @ManyToOne
+    @JoinColumn(name = "GATE_ID", referencedColumnName = "ID")
+    private Gate gate;
 }

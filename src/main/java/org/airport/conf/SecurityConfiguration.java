@@ -16,6 +16,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable();//In practice, this should not be disabled!
+        httpSecurity.headers().frameOptions().disable(); //h2-console to not be blank page
 
         httpSecurity.
                 authorizeRequests()
@@ -33,7 +34,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
-    // Create 2 users for demo
+    // Create two users for demo
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 

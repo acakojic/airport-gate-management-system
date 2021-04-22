@@ -3,6 +3,7 @@ package org.airport.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Object Relational Mapping for Gate table.
@@ -23,8 +24,10 @@ public class Gate {
     @Column(name = "STATUS")
     private String status;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FLIGHT_ID")
     private Flight flight;
 
+    @OneToMany(mappedBy = "gate", cascade = CascadeType.ALL)
+    private List<Reservation> reservations;
 }

@@ -1,7 +1,4 @@
--- inserting configurations ----------------------------------------------------------------------------------
--- INSERT INTO admin (name) VALUES ('admin0111');
--- INSERT INTO admin (name) VALUES ('admin0112');
--- INSERT INTO admin (name) VALUES ('admin0113');
+-- inserting configurations
 
 INSERT INTO FLIGHT (ID, NAME) VALUES (1, 'flight01');
 INSERT INTO FLIGHT (NAME) VALUES ('flight02');

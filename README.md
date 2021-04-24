@@ -25,6 +25,7 @@ GET, PUT request is secured with username `admin` and password `admin` and CSRF 
 * List all Gates: `GET http://localhost:8080/rest/gates`
 * Update existing Gate (identified by id): `PUT http://localhost:8080/rest/gates/{id}`
 * Get specific Flight and park it to Gate if available (by flight_id): `GET http://localhost:8080/rest/flights/{id}/park`
+* Add a new Reservation: `POST http://localhost:8080/rest/reservations`
 
 # Example commands to test with Curl
 * List all Gates: `curl -v -H "Content-Type: application/json" -X GET -u "admin:admin" http://localhost:8080/rest/gates`
@@ -34,9 +35,11 @@ GET, PUT request is secured with username `admin` and password `admin` and CSRF 
     * (without authentication, thus expected to fail) `curl -v -H "Content-Type: application/json" -X PUT -d '{"name" : "gate01", "status" : "CLOSED"}' http://localhost:8080/rest/gates/1`
 
 * Get specific Flight and park(update) it to Gate if available (by flight_id): 
-    * `curl -v -H "Content-Type: application/json" -X GET -u "admin:admin" http://localhost:8080/rest/flights/1/park`
-    * `curl -v -H "Content-Type: application/json" -X GET -u "admin:admin" http://localhost:8080/rest/flights/2/park`
-    
+    * `curl -v -H "Content-Type: application/json" -X GET -u "user:user" http://localhost:8080/rest/flights/1/park`
+    * `curl -v -H "Content-Type: application/json" -X GET -u "user:user" http://localhost:8080/rest/flights/2/park`
+  
+* Add new reservation:
+    * `curl -v -H "Content-Type: application/json" -X POST -u "user:user" -d '{"time_from":"2014-01-01T11:00:00","time_to":"2014-01-01T22:00:00"}' http://localhost:8080/rest/reservations`
 
 
 

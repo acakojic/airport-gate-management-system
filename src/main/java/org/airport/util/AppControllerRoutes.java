@@ -7,4 +7,5 @@ public final class AppControllerRoutes {
 
     public static final String GATE = "/rest/gates";
     public static final String FLIGHT = "/rest/flights";
+    public static final String RESERVATION = "/rest/reservations";
 }

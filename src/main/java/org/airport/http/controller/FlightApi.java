@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
-@Api(value = "flight", description = "the Flight API")
+@Api(value = "flights", description = "the Flight API")
 @RequestMapping(value = AppControllerRoutes.FLIGHT)
 public interface FlightApi {
 

@@ -23,6 +23,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/rest/gates").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/rest/gates/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/rest/flights/**").hasRole("USER")
+                .antMatchers(HttpMethod.POST, "/rest/reservations").hasRole("USER")
                 .antMatchers("/swagger-resources/**").hasRole("ADMIN")
                 .antMatchers("/swagger-ui.html").hasRole("ADMIN")
                 .antMatchers("/v2/api-docs").hasRole("ADMIN")

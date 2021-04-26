@@ -3,6 +3,7 @@ package org.airport.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Object Relational Mapping for Airport table.
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "FLIGHT")
 @Data
-public class Flight {
+public class Flight implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

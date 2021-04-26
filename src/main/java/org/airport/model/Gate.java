@@ -3,6 +3,7 @@ package org.airport.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "GATE")
 @Data
-public class Gate {
+public class Gate implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
